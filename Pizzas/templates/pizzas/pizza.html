@@ -1,0 +1,51 @@
+{% extends "pizzas/base.html" %} 
+
+
+{% block content %}
+
+<h3>
+    Pizza:
+</h3>
+
+<p>
+    {{ pizza }}
+</p>
+
+<div>
+<img src="{{ pizza.picture.url }}" width=400 height=auto/>       
+</div>
+
+<h3>
+    Toppings: 
+</h3>
+<ul>
+    {% for t in toppings %}
+    <li>
+        <p> {{ t.topping_name }}</p>
+    </li>
+    {% empty %} 
+    <li> There are no toppings for this pizza yet. </li>
+    {% endfor %} 
+</ul>
+
+<h3>
+    Comments:
+</h3>
+
+<p>
+    {% for c in comment %} 
+    <li>
+        {{ c }}
+    </li>    
+    {% endfor %}
+</p>
+
+
+
+
+
+<!-- <p><a href="{% url 'pizzas:new_topping' pizza.id %}">Add a new topping</a></p> -->
+
+<p><a href="{% url 'pizzas:new_comment' pizza.id %}">Add a new comment</a></p>
+
+{% endblock content %} 
